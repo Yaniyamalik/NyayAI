@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# 🧠 NyayAI – AI-Powered Legal Help Platform
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+NyayAI is an AI-powered platform designed to bridge the gap between legal awareness and access to justice. Tailored especially for underrepresented communities, NyayAI simplifies legal jargon, assists users in understanding their rights, and connects them with relevant resources and legal professionals.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* 🧾 **Legal Query Assistant**
+  Ask any legal question in natural language and get AI-generated responses based on Indian laws.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* 🔍 **Searchable Legal Knowledge Base**
+  Access categorized articles and FAQs for common legal issues.
 
-## Learn More
+* 🧑‍⚖️ **Lawyer Connect**
+  Find verified legal experts based on your issue and location.
 
-To learn more about Next.js, take a look at the following resources:
+* 📑 **Document Analyzer**
+  Upload legal documents to get simplified summaries and insights.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* 🗳️ **Community Legal Forum**
+  Ask public questions, get peer support, upvote useful answers, and comment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+| Frontend | Backend           | AI/ML/NLP  | Database | Others                                  |
+| -------- | ----------------- | ---------- | -------- | --------------------------------------- |
+| React.js | Next.js           | Gemini API | MongoDB  | TailwindCSS, JWT Auth, Multer, REST API |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 📸 Demo Preview
+
+> https://youtu.be/gAilCjLsimI
+
+## 🧪 How to Run Locally
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/nyayai.git
+   cd nyayai
+   ```
+
+2. **Setup Backend**
+
+   ```bash
+   cd server
+   npm install
+   npm run dev
+   ```
+
+3. **Setup Frontend**
+
+   ```bash
+   cd client
+   npm install
+   npm start
+   ```
+
+4. **Environment Variables**
+   Create a `.env` file in `/server` and `/client` directories with necessary keys:
+
+   * `MONGODB_URI`
+   * `GEMINI_API_KEY`
+   * `JWT_SECRET`
+
+## 🤝 Contributors
+
+* Yaniya – Full Stack Developer
+* Divyanshu Sharma-Next.js Developer
+* Divyanshu Verma-React.js Developer
+* Piyush-UI UX designer
+
+## 🏁 Hackathon Submission
+
+Project developed as part of **HackHeaven 2.0**
+
+> https://devfolio.co/hackhaven2/dashboard
+
+
+
+
+
