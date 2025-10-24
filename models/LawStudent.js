@@ -1,4 +1,4 @@
-import { number } from "framer-motion";
+
 import mongoose from "mongoose";
 
 const lawstudentSchema = new mongoose.Schema({
