@@ -15,10 +15,10 @@ export async function GET(req) {
     const lawstudent = await LawStudent.findOne({ _id: user._id }).select("-password");
 
     if (!lawstudent ) {
-      return NextResponse.json({ error: "Lawstudetn profile not found" }, { status: 404 });
+      return NextResponse.json({ error: "Lawstudent profile not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ lawyer }, { status: 200 });
+    return NextResponse.json({ lawystudent }, { status: 200 });
   } catch (error) {
     console.error("Get lawstudent profile error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
