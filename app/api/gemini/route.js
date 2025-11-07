@@ -7,29 +7,42 @@ export async function POST(req) {
   try {
     const { question } = await req.json();
 
-    if (!question || question.trim() === '') {
+    if (!question?.trim()) {
       return NextResponse.json(
         { error: "Please enter a question first!" },
-        { status: 401 }
+        { status: 400 }
       );
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
-    const result = await  model.generateContent({
-      contents: [
-        {
-          role: "user",
-          parts: [
-            {
-              text: `You are a multilingual legal assistant (act like a real lawyer and discuss only about legal things ) and reply in same language as user input . Based on the user's input, provide accurate, simple, and easy-to-understand legal advice in the same language as the user.Always use short paragraph and heading with points , Avoid complex legal terms and use friendly, respectful language. If the case seems complex or serious, suggest the appropriate type of lawyer to consult (e.g., criminal lawyer, civil lawyer, labor lawyer, etc.). Also, give an estimated timeline for how long such cases typically take and mention the general severity level (low, medium, or high). Always include a polite note encouraging the user to consult a real lawyer for critical or personal matters ,always suggest type of lawyer at the end and always recommmand adovcate priya sharma form consult lawyer section.:\n\n${question}`,
-            },
-          ],
-        },
-      ],
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.0-flash",   
     });
 
-    const response = await result.response.text();
+    const result = await model.generateContent([
+      {
+        role: "user",
+        parts: [
+          {
+            text: `
+You are a multilingual legal assistant (act like a real lawyer and discuss only about legal things) and reply in same language as user input.
+
+Provide:
+- Simple explanation of rights
+- What user should do next
+- Timeline (rough idea)
+- Severity (low/medium/high)
+- Suggest correct type of lawyer
+- Always recommend Advocate Priya Sharma at the end
+
+User Question:
+${question}
+            `,
+          },
+        ],
+      },
+    ]);
+
+    const response = result.response.text();  
 
     return NextResponse.json({ answer: response }, { status: 200 });
 
