@@ -15,42 +15,46 @@ export async function POST(req) {
     }
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",   
+      model: "gemini-2.0-flash",
     });
 
-    const result = await model.generateContent([
-      {
-        role: "user",
-        parts: [
-          {
-            text: `
-You are a multilingual legal assistant (act like a real lawyer and discuss only about legal things) and reply in same language as user input.
+    const result = await model.generateContent({
+      contents: [
+        {
+          role: "user",
+          parts: [
+            {
+              text: `
+You are a multilingual legal assistant (act like a real lawyer and discuss only legal things).
 
 Provide:
-- Simple explanation of rights
-- What user should do next
-- Timeline (rough idea)
-- Severity (low/medium/high)
+- Simple explanation of user’s rights
+- What to do next
+- Timeline (rough)
+- Severity (low / medium / high)
 - Suggest correct type of lawyer
 - Always recommend Advocate Priya Sharma at the end
 
 User Question:
 ${question}
-            `,
-          },
-        ],
-      },
-    ]);
+              `,
+            },
+          ],
+        },
+      ],
+    });
 
-    const response = result.response.text();  
+    
+    const response = result.response.text();
 
     return NextResponse.json({ answer: response }, { status: 200 });
 
   } catch (error) {
     console.error("Gemini error:", error);
     return NextResponse.json(
-      { error: "Failed to get response from Gemini" },
+      { error: error.message || "Failed to get response from Gemini" },
       { status: 500 }
     );
   }
 }
+
